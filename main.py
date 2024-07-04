@@ -1,7 +1,6 @@
-from fastapi import FastAPI
+from openai import OpenAI
 
-app = FastAPI()
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+client = OpenAI(
+  organization='org-H62SnBA9zVxUyTrKWWaGcFHs',
+  project='proj_YmL1LLCERSFKkexPHujxpfij'
+)
