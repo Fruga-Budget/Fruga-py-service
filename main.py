@@ -29,6 +29,7 @@ async def generate_advice(request: Request):
   messages = [
     {"role": "system", "content": "You are personal financial planner."},
     {"role": "user", "content": (
+      f"For the following messages provide a response as concise as possible."
       f"A user has a total income of {total_income}."
       f"Their needs are: {needs_data}."
       f"Their wants are: {wants_data}."
@@ -37,7 +38,6 @@ async def generate_advice(request: Request):
       f"If it does not, provide specific recommendations on how they can adjust their budget to meet the rule."
       f"Highlight which items can be modified and suggest specific changes, considering whether the items are negotiable."
       f"Additionally, provide a revised budget breakdown that meets the 50/30/20 rule as closely as possible."
-      f"Additionally, respond fully based off of the requirements in this message in as little tokens as possible"
       # f"Provide the top 3 suggestions on how the user can make their savings grow"
     )}
   ]
@@ -45,7 +45,7 @@ async def generate_advice(request: Request):
   chat_completion = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=messages,
-    max_tokens=10,
+    max_tokens=100,
     temperature=0.8 # we can change this to see different results, higher number more creative responses
     # user="user_id variable"
   )
