@@ -10,7 +10,6 @@ app = FastAPI()
 
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
-# openai.api_key = OPENAI_API_KEY
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 @app.post("/v1/generate_advice")
@@ -46,7 +45,7 @@ async def generate_advice(request: Request):
   chat_completion = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=messages,
-    max_tokens=100,
+    max_tokens=10,
     temperature=0.8 # we can change this to see different results, higher number more creative responses
     # user="user_id variable"
   )
