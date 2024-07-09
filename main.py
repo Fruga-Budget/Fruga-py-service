@@ -14,7 +14,7 @@ OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
 openai.api_key = OPENAI_API_KEY
 
-@app.post("/generate_advice")
+@app.post("/v1/generate_advice")
 async def generate_advice(request: Request):
   body = await request.json()
   total_income = body.get("total_income")
@@ -37,14 +37,14 @@ async def generate_advice(request: Request):
       f"If it does not, provide specific recommendations on how they can adjust their budget to meet the rule."
       f"Highlight which items can be modified and suggest specific changes, considering whether the items are negotiable."
       f"Additionally, provide a revised budget breakdown that meets the 50/30/20 rule as closely as possible."
-      f"Provide the top 3 suggestions on how the user can make their savings grow"
+      # f"Provide the top 3 suggestions on how the user can make their savings grow"
     )}
   ]
 
   response = client.completions.create(
     model="gpt-3.5-turbo",
     messages=messages,
-    max_tokens=100,
+    max_tokens=10,
     temperature=0.8 # we can change this to see different results, higher number more creative responses
     # user="user_id variable"
   )
