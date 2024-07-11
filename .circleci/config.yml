@@ -43,7 +43,6 @@ jobs:
             export FLYCTL_INSTALL="/root/.fly"
             export PATH="$FLYCTL_INSTALL/bin:$PATH"
             echo "Successfully Installed Flyctl"
-            echo "$FLY_API_TOKEN"
             flyctl version
             flyctl auth token "$FLY_API_TOKEN"
             flyctl deploy
