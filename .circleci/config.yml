@@ -1,0 +1,54 @@
+version: 2.1
+
+executors:
+  python-executor:
+    docker:
+      - image: circleci/python:3.9
+    working_directory: ~/repo
+
+jobs:
+  install-dependencies:
+    executor: python-executor
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            python -m venv venv
+            . venv/bin/activate
+            pip install --upgrade pip
+            pip install -r requirements.txt
+
+  test:
+    executor: python-executor
+    steps:
+      - checkout
+      - run:
+          name: Run tests
+          command: |
+            . venv/bin/activate
+            pytest
+
+  deploy:
+    docker:
+      - image: circleci/python:3.9
+    steps:
+      - checkout
+      - run:
+          name: Deploy application
+          command: |
+            . venv/bin/activate
+            # Add your deployment commands here
+            echo "Deploying application"
+
+workflows:
+  version: 2
+  test-and-deploy:
+    jobs:
+      - install-dependencies
+      - test:
+          requires:
+            - install-dependencies
+      - deploy:
+          requires:
+            - test
