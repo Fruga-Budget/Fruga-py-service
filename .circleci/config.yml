@@ -38,7 +38,6 @@ jobs:
           name: Deploy application
           command: |
             . venv/bin/activate
-            apk add --no-cache curl
             curl -L https://fly.io/install.sh | sh
             export FLYCTL_INSTALL="/root/.fly"
             export PATH="$FLYCTL_INSTALL/bin:$PATH"
