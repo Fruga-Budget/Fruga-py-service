@@ -38,8 +38,18 @@ jobs:
           name: Deploy application
           command: |
             . venv/bin/activate
-            # Add your deployment commands here
-            echo "Deploying application"
+            apk add --no-cache curl
+            curl -L https://fly.io/install.sh | sh
+            export FLYCTL_INSTALL="/root/.fly"
+            export PATH="$FLYCTL_INSTALL/bin:$PATH"
+            echo "Successfully Installed Flyctl"
+            echo "$FLY_API_TOKEN"
+            flyctl version
+            flyctl auth token "$FLY_API_TOKEN"
+            flyctl deploy
+            flyctl status
+            flyctl info
+            exit 0
 
 workflows:
   version: 2
