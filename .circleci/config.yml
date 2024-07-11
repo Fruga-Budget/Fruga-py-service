@@ -1,0 +1,63 @@
+version: 2.1
+
+executors:
+  python-executor:
+    docker:
+      - image: cimg/python:3.12.4
+    working_directory: ~/repo
+
+jobs:
+  install-dependencies:
+    executor: python-executor
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            python -m venv venv
+            . venv/bin/activate
+            pip install --upgrade pip
+            pip install -r requirements.txt
+
+  test:
+    executor: python-executor
+    steps:
+      - checkout
+      - run:
+          name: Run tests
+          command: |
+            . venv/bin/activate
+            pytest
+
+  deploy:
+    docker:
+      - image: cimg/python:3.12.4
+    steps:
+      - checkout
+      - run:
+          name: Deploy application
+          command: |
+            . venv/bin/activate
+            apk add --no-cache curl
+            curl -L https://fly.io/install.sh | sh
+            export FLYCTL_INSTALL="/root/.fly"
+            export PATH="$FLYCTL_INSTALL/bin:$PATH"
+            echo "Successfully Installed Flyctl"
+            flyctl version
+            flyctl auth token "$FLY_API_TOKEN"
+            flyctl deploy
+            flyctl status
+            flyctl info
+            exit 0
+
+workflows:
+  version: 2
+  test-and-deploy:
+    jobs:
+      - install-dependencies
+      - test:
+          requires:
+            - install-dependencies
+      - deploy:
+          requires:
+            - test
