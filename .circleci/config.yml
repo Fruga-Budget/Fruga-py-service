@@ -24,21 +24,34 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install dependencies for testing
+          command: |
+            python -m venv venv
+            . venv/bin/activate
+            pip install --upgrade pip
+            pip install -r requirements.txt
+      - run:
           name: Run tests
           command: |
             . venv/bin/activate
-            pytest
+            pytest --junitxml=test-results/junit.xml --cov=app --cov-report=xml --cov-report=term
+      - store_artifacts:
+          path: test-results
+          destination: test-results
+      - store_artifacts:
+          path: coverage.xml
+          destination: coverage.xml
+      - store_test_results:
+          path: test-results
 
   deploy:
-    docker:
-      - image: cimg/python:3.12.4
+    executor: python-executor
     steps:
       - checkout
       - run:
           name: Deploy application
           command: |
             . venv/bin/activate
-            apk add --no-cache curl
             curl -L https://fly.io/install.sh | sh
             export FLYCTL_INSTALL="/root/.fly"
             export PATH="$FLYCTL_INSTALL/bin:$PATH"
@@ -48,10 +61,8 @@ jobs:
             flyctl deploy
             flyctl status
             flyctl info
-            exit 0
 
 workflows:
-  version: 2
   test-and-deploy:
     jobs:
       - install-dependencies
