@@ -35,9 +35,17 @@ jobs:
           command: |
             . venv/bin/activate
             pytest --junitxml=test-results/junit.xml --cov=app --cov-report=xml --cov-report=term
+      - store_artifacts:
+          path: test-results
+          destination: test-results
+      - store_artifacts:
+          path: coverage.xml
+          destination: coverage.xml
+      - store_test_results:
+          path: test-results
+
   deploy:
-    docker:
-      - image: cimg/python:3.12.4
+    executor: python-executor
     steps:
       - checkout
       - run:
@@ -55,7 +63,6 @@ jobs:
             flyctl info
 
 workflows:
-  version: 2
   test-and-deploy:
     jobs:
       - install-dependencies

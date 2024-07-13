@@ -6,3 +6,5 @@ pytest-asyncio
 python-dotenv
 httpx
 pytest-vcr
+pytest-cov
+requests
