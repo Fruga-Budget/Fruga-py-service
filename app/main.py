@@ -7,7 +7,6 @@ import ipdb
 
 load_dotenv()
 
-# Configure logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
@@ -56,7 +55,6 @@ async def generate_advice(request: Request):
             temperature=0.8
         )
         advice = chat_completion.choices[0].message.content.strip()
-        # ipdb.set_trace()
         return {"advice": advice}
     except Exception as e:
         logger.error(f"Error generating advice: {e}")
