@@ -5,6 +5,8 @@ executors:
     docker:
       - image: cimg/python:3.12.4
     working_directory: ~/repo
+    environment:
+      OPENAI_API_KEY: $OPENAI_API_KEY
 
 jobs:
   install-dependencies:
