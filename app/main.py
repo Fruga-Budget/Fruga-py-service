@@ -50,7 +50,7 @@ async def generate_advice(request: Request):
         chat_completion = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=messages,
-            max_tokens=10,
+            max_tokens=250,
             temperature=0.8
         )
         advice = chat_completion.choices[0].message.content.strip()
