@@ -53,7 +53,6 @@ jobs:
             echo 'export PATH="$FLYCTL_INSTALL/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             echo "Successfully Installed Flyctl"
-            fly --version
       - run:
           name: Deploy application
           command: |
