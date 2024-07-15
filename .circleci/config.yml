@@ -50,11 +50,10 @@ jobs:
             export FLYCTL_INSTALL="/root/.fly"
             export PATH="$FLYCTL_INSTALL/bin:$PATH"
             echo "Successfully Installed Flyctl"
-            flyctl version
-            flyctl auth login --access-token "$FLY_API_TOKEN"
-            flyctl deploy
-            flyctl status
-            flyctl info
+            fly version
+            fly auth login --access-token "$FLY_API_TOKEN"
+            fly deploy
+            fly status
 
 workflows:
   test-and-deploy:
