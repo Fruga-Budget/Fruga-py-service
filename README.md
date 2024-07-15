@@ -83,3 +83,8 @@
 ## Refactor Ideas
 - Create api mocking for tests using VCR or another that can be dynamic to limit API calls during tests
 - Refactor error messages into error serializer
+
+## Fruga-Team
+- Steddmnn Bell [GitHub](https://github.com/Steddy1Love)
+- Nico Shanstrom [GitHub](https://github.com/NicoShanstrom)
+- Lydia Sims [GitHub](https://github.com/LISims88)
