@@ -11,7 +11,7 @@
 ### Installation
 1. Fork then Clone the repo to your machine:
     ```sh
-    git clone <github_repo_url>
+    git clone <git@github.com:Fruga-Budget/Fruga-py-service.git>
     cd <repo_directory>
     ```
 2. Create and activate a virtual environment:
@@ -83,3 +83,8 @@
 ## Refactor Ideas
 - Create api mocking for tests using VCR or another that can be dynamic to limit API calls during tests
 - Refactor error messages into error serializer
+
+## Fruga-Team
+- Steddmnn Bell [GitHub](https://github.com/Steddy1Love)
+- Nico Shanstrom [GitHub](https://github.com/NicoShanstrom)
+- Lydia Sims [GitHub](https://github.com/LISims88)
