@@ -1,2 +1,2 @@
 # TODO: Modify this Procfile to fit your needs
-web: uvicorn main:server
+web: uvicorn app.main:app --reload
