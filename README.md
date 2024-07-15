@@ -11,7 +11,7 @@
 ### Installation
 1. Fork then Clone the repo to your machine:
     ```sh
-    git clone <github_repo_url>
+    git clone <git@github.com:Fruga-Budget/Fruga-py-service.git>
     cd <repo_directory>
     ```
 2. Create and activate a virtual environment:
