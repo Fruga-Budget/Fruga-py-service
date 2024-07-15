@@ -8,3 +8,4 @@ httpx
 pytest-vcr
 pytest-cov
 requests
+gunicorn
