@@ -14,8 +14,6 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            python -m venv venv
-            . venv/bin/activate
             pip install --upgrade pip
             pip install -r requirements.txt
 
@@ -26,14 +24,11 @@ jobs:
       - run:
           name: Install dependencies for testing
           command: |
-            python -m venv venv
-            . venv/bin/activate
             pip install --upgrade pip
             pip install -r requirements.txt
       - run:
           name: Run tests
           command: |
-            . venv/bin/activate
             pytest --junitxml=test-results/junit.xml --cov=app --cov-report=xml --cov-report=term
       - store_artifacts:
           path: test-results
@@ -51,16 +46,14 @@ jobs:
       - run:
           name: Deploy application
           command: |
-            . venv/bin/activate
             curl -L https://fly.io/install.sh | sh
             export FLYCTL_INSTALL="/root/.fly"
             export PATH="$FLYCTL_INSTALL/bin:$PATH"
             echo "Successfully Installed Flyctl"
-            flyctl version
-            flyctl auth token "$FLY_API_TOKEN"
-            flyctl deploy
-            flyctl status
-            flyctl info
+            fly version
+            fly auth login --access-token "$FLY_API_TOKEN"
+            fly deploy
+            fly status
 
 workflows:
   test-and-deploy:
