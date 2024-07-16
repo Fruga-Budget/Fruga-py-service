@@ -54,9 +54,10 @@ jobs:
       - run:
           name: Deploy application
           command: |
-            fly auth login --access-token "$FLY_API_TOKEN"
-            fly deploy
-            fly status
+            fly auth token "$FLY_API_TOKEN" > ~/.fly/access-token
+            flyctl auth login --token $(cat ~/.fly/access-token)
+            flyctl deploy
+            flyctl status
 
 workflows:
   test-and-deploy:
