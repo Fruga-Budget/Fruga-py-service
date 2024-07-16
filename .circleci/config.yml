@@ -44,17 +44,19 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Deploy application
+          name: Install Flyctl
           command: |
             curl -L https://fly.io/install.sh | sh
-            export FLYCTL_INSTALL="/home/circleci/.fly"
-            export PATH="$FLYCTL_INSTALL/bin:$PATH"
+            echo 'export FLYCTL_INSTALL="/home/circleci/.fly"' >> $BASH_ENV
+            echo 'export PATH="$FLYCTL_INSTALL/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
             echo "Successfully Installed Flyctl"
-            source $FLYCTL_INSTALL/env
-            flyctl version
-            flyctl auth login --access-token "$FLY_API_TOKEN"
-            flyctl deploy
-            flyctl status
+      - run:
+          name: Deploy application
+          command: |
+            fly auth login --access-token "$FLY_API_TOKEN"
+            fly deploy
+            fly status
 
 workflows:
   test-and-deploy:
