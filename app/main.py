@@ -29,7 +29,7 @@ async def fetch_openai_advice(messages):
             "model": "gpt-3.5-turbo",
             "messages": messages,
             "max_tokens": 250,
-            "temperature": 0.8
+            "temperature": 0.7
           }
         )
         response.raise_for_status()
