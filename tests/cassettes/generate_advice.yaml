@@ -1,0 +1,153 @@
+interactions:
+- request:
+    body: '{"model": "gpt-3.5-turbo", "messages": [{"role": "system", "content": "You
+      are personal financial planner."}, {"role": "user", "content": "For the following
+      messages provide a response as concise as possible.A user has a total income
+      of 5000.Their needs are: [{''name'': ''Rent'', ''cost'': 1500, ''description'':
+      \"On a lease, this can''t be changed!\", ''isNegotiable'': False}, {''name'':
+      ''Utilities'', ''cost'': 500, ''description'': '''', ''isNegotiable'': True},
+      {''name'': ''Misc.'', ''cost'': 500, ''description'': ''Food Budget, Gas'',
+      ''isNegotiable'': False}].Their wants are: [{''name'': ''Dining Out'', ''cost'':
+      500, ''description'': ''Yummy!''}, {''name'': ''Entertainment'', ''cost'': 500,
+      ''description'': ''Going to the movies is important to me''}, {''name'': ''Starbucks
+      Coffee'', ''cost'': 200, ''description'': \"I don''t know how to make coffee\"},
+      {''name'': ''Shoes'', ''cost'': 500, ''description'': ''Every time I drive by
+      DSW I buy shoes''}].Their savings are: [{''name'': ''401k'', ''cost'': 200,
+      ''description'': ''Deposited from paycheck at work.''}, {''name'': ''Savings
+      Account'', ''cost'': 800, ''description'': ''0.5% apr''}].Please check if the
+      user''s budget matches the 50/30/20 rule.If it does not, provide specific recommendations
+      on how they can adjust their budget to meet the rule.Highlight which items can
+      be modified and suggest specific changes, considering whether the items are
+      negotiable.Additionally, provide a revised budget breakdown that meets the 50/30/20
+      rule as closely as possible."}], "max_tokens": 250, "temperature": 0.8}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '1487'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - python-httpx/0.27.0
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAAwAAAP//ZFPLbtswELz7KxaCg15sRZKtutWtTYsgh7ZoHijauggoci0xppYCuYpj
+        BPn3gpJs93GRyH2MZnZHzxOASKuogEjWgmXTmvlbK8of1VX18Pjl9eUtqw6zrbzU3xdf0/oumoUO
+        Wz6g5ENXLG3TGmRtaUhLh4IxoKarLH2zXKaLVZ9orEIT2qqW54s4n3PnSjtP0iwfO2urJfqogJ8T
+        AIDn/hk4ksKnqIBkdog06L2oMCqORQCRsyZEIuG99iyIo9kpKS0xUk/7tkboPLpXHspOVcigLHog
+        yyA755DY7KERLGvgGiFPzhfJeZaA6wzGa1rTNUrbNEhKBNm+WFMaw4UlrxU6cKg6qamCD5rC60vH
+        IEjBR2J0LDQ1SAz41CJ59MAWhNEVwU5zDTtB7EEKxsq6/cgvXlMWwxWF0XoELx41VR6EMVb2FHoQ
+        VaPDcAqks+TsWFd1WqHRdCD/qD0qeD9ILx2KrbI7KtY0h8+IyhdwHRhO0zxJZnDH2mjW6GHa3z9p
+        L+P+HBq+Bb7Fn1KnWZ7M/hE7xG5YuLKTWw8XdrNBhGkaAG/qMP3pIu8BbwbSBSyTdAvTrK8YhbyT
+        0nYBbhVq13Rbaw9u1DOuUhrr0exhY42xO///Boc558kZbKwbBM9gMV57ObN+XdkYGj8eR6OXXo4m
+        NLZqnS2DYakz5hjfaNK+vg/LshQM59m2Q/vLBOBXb/buL/9GrbNNy/dst0gBcLFKB7zo9H+dsuny
+        kGXLwpwSeZpNRoqR33vG5n6jqULXOt2bPxCdvEx+AwAA//8DAIZNriv7AwAA
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8a85d203ad3c1d74-ATL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 24 Jul 2024 18:02:19 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=vN_P3Tap8QglzsizKUL3K_qcpfeNjosbrck6JrabIRU-1721844139-1.0.1.1-zApacJuijQkftk0Uq3qk_E6Ou4Ax8jjO.NzjKWbUSKZMnvMCYV942RfjrqZxckn3KgMZdKlVxA2As7EsspN9bQ;
+        path=/; expires=Wed, 24-Jul-24 18:32:19 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=ikyRNHYOn5Jeo2ApHEkSE9wIuYGkOxIs4sTVXO_TTHo-1721844139903-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-organization:
+      - fruga-budget
+      openai-processing-ms:
+      - '2166'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15552000; includeSubDomains; preload
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '200000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '199413'
+      x-ratelimit-reset-requests:
+      - 8.64s
+      x-ratelimit-reset-tokens:
+      - 175ms
+      x-request-id:
+      - req_efc32bde2c1d6668dc8f6efe2baafa05
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"total_income": 5000, "needs": [{"name": "Rent", "cost": 1500, "description":
+      "On a lease, this can''t be changed!", "isNegotiable": false}, {"name": "Utilities",
+      "cost": 500, "description": "", "isNegotiable": true}, {"name": "Misc.", "cost":
+      500, "description": "Food Budget, Gas", "isNegotiable": false}], "wants": [{"name":
+      "Dining Out", "cost": 500, "description": "Yummy!"}, {"name": "Entertainment",
+      "cost": 500, "description": "Going to the movies is important to me"}, {"name":
+      "Starbucks Coffee", "cost": 200, "description": "I don''t know how to make coffee"},
+      {"name": "Shoes", "cost": 500, "description": "Every time I drive by DSW I buy
+      shoes"}], "savings": [{"name": "401k", "cost": 200, "description": "Deposited
+      from paycheck at work."}, {"name": "Savings Account", "cost": 800, "description":
+      "0.5% apr"}]}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '823'
+      content-type:
+      - application/json
+      host:
+      - testserver
+      user-agent:
+      - testclient
+    method: POST
+    uri: http://testserver/v1/generate_advice
+  response:
+    body:
+      string: '{"advice":"The user''s budget does not currently match the 50/30/20
+        rule.\n\nRecommendations:\n1. Consider reducing Dining Out and Entertainment
+        expenses to align with wants category budget.\n2. Increase savings allocation
+        to adhere to the 20% savings guideline.\n\nRevised Budget breakdown:\n- Needs:
+        Rent $1500, Utilities $500, Misc. $500\n- Wants: Dining Out $250, Entertainment
+        $250, Starbucks Coffee $100, Shoes $350\n- Savings: 401k $200, Savings Account
+        $750\n\nThis revised budget closely follows the 50/30/20 rule with 50% for
+        Needs, 30% for Wants, and 20% for Savings."}'
+    headers:
+      content-length:
+      - '579'
+      content-type:
+      - application/json
+    status:
+      code: 200
+      message: OK
+version: 1

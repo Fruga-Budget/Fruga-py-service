@@ -1,10 +1,19 @@
 import os
 import pytest
+import vcr
 from fastapi.testclient import TestClient
 from app.main import app
 
 client = TestClient(app)
+vcr = vcr.VCR(
+    cassette_library_dir='tests/cassettes',
+    path_transformer=vcr.VCR.ensure_suffix('.yaml'),
+    record_mode='once',  # or 'new_episodes', 'none', 'all' depending on your use case
+    match_on=['method', 'scheme', 'host', 'port', 'path', 'query', 'body'],
+    filter_headers=['Authorization']
+)
 
+@vcr.use_cassette('generate_advice.yaml')
 def test_generate_advice():
     openai_api_key = os.getenv('OPENAI_API_KEY')
     if not openai_api_key:
