@@ -74,7 +74,3 @@ async def generate_advice(request: Request):
   except Exception as e:
     logger.error(f"Error generating advice: {e}")
     raise HTTPException(status_code=500, detail="Failed to generate advice")
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}

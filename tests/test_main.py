@@ -47,8 +47,3 @@ def test_generate_advice():
     assert response.status_code == 200
     data = response.json()
     assert "advice" in data
-
-def test_root():
-    response = client.get("/")
-    assert response.status_code == 200
-    assert response.json() == {"message": "Hello World"}
