@@ -57,15 +57,14 @@ async def generate_advice(request: Request):
     messages = [
         {"role": "system", "content": "You are personal financial planner."},
         {"role": "user", "content": (
-            f"For the following messages provide a response as concise as possible."
-            f"A user has a total income of {total_income}."
-            f"Their needs are: {needs_data}."
-            f"Their wants are: {wants_data}."
-            f"Their savings are: {savings_data}."
-            f"Please check if the user's budget matches the 50/30/20 rule."
-            f"If it does not, provide specific recommendations on how they can adjust their budget to meet the rule."
-            f"Highlight which items can be modified and suggest specific changes, considering whether the items are negotiable."
-            f"Additionally, provide a revised budget breakdown that meets the 50/30/20 rule as closely as possible."
+          "Please provide a concise response of no more than 250 tokens."
+          f" A user has a total income of {total_income}. "
+          f"Their needs are: {needs_data}. "
+          f"Their wants are: {wants_data}. "
+          f"Their savings are: {savings_data}. "
+          "Check if the user's budget matches the 50/30/20 rule. "
+          "If not, provide specific recommendations for adjustments, highlighting negotiable items. "
+          "Additionally, provide a revised budget breakdown that closely meets the 50/30/20 rule."
         )}
     ]
 
