@@ -54,7 +54,7 @@ jobs:
       - run:
           name: Deploy application
           command: |
-            fly auth login --access-token "$FLY_API_TOKEN"
+            fly auth token $FLY_API_TOKEN
             fly deploy
             fly status
 
