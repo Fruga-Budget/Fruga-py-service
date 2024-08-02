@@ -39,8 +39,8 @@ jobs:
       - store_test_results:
           path: test-results
       - store_artifacts:
-      path: htmlcov
-      destination: coverage-html
+          path: htmlcov
+          destination: coverage-html
 
   deploy:
     executor: python-executor
