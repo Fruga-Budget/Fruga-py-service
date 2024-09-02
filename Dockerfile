@@ -1,18 +1,17 @@
 # syntax = docker/dockerfile:1
 
 # Use a multi-architecture base image
-FROM --platform=linux/amd64 python:3.12.4-slim as base
+FROM python:3.12.4-slim as base
+
+# Copy the application code
+COPY . /app/
+# Install dependencies
+COPY requirements.txt /app/
 
 # Set the working directory
 WORKDIR /app
 
-# Install dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the application code
-COPY . .
-
+RUN pip3 install --no-cache-dir -r requirements.txt
 # Expose the application port
 EXPOSE 8080
 
