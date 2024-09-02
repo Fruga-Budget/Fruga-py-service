@@ -1,5 +1,3 @@
-# syntax = docker/dockerfile:1
-
 # Use a multi-architecture base image
 FROM python:3.12.4-slim as base
 
