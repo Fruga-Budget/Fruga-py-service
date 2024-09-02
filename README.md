@@ -42,6 +42,10 @@
     ```sh
     pytest
     ```
+2. Running the tests with coverage with pytest-cov:
+    ```sh
+    pytest --cov=app --cov-report=term --cov-report=html
+    ```
 ## Endpoints
 
 ### Create a Subscription
@@ -80,11 +84,21 @@
 - Implement authentication and authorization for accessing the API.
 
 
-## Refactor Ideas
-- Create api mocking for tests using VCR or another that can be dynamic to limit API calls during tests
-- Refactor error messages into error serializer
+## Test Coverage as of 8/2/24
+```
+---------- coverage: platform darwin, python 3.12.4-final-0 ----------
+Name              Stmts   Miss  Cover
+-------------------------------------
+app/__init__.py       0      0   100%
+app/main.py          38     24    37%
+-------------------------------------
+TOTAL                38     24    37%
+Coverage HTML written to dir htmlcov
+```
 
 ## Fruga-Team
 - Steddmnn Bell [GitHub](https://github.com/Steddy1Love)
 - Nico Shanstrom [GitHub](https://github.com/NicoShanstrom)
+- Grant Davis [GitHub](https://github.com/grantdavis303)
 - Lydia Sims [GitHub](https://github.com/LISims88)
+- Brandon [GitHub](https://github.com/BrandonDoza)

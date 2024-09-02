@@ -8,7 +8,7 @@ client = TestClient(app)
 vcr = vcr.VCR(
     cassette_library_dir='tests/cassettes',
     path_transformer=vcr.VCR.ensure_suffix('.yaml'),
-    record_mode='once',  # or 'new_episodes', 'none', 'all' depending on your use case
+    record_mode='once',
     match_on=['method', 'scheme', 'host', 'port', 'path', 'query', 'body'],
     filter_headers=['Authorization']
 )
